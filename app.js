@@ -12,6 +12,7 @@ const cors = require('cors');
 // initiate express
 const app = express();
 const router = express.Router();
+const book_router = express.Router();
 
 //----------------------------------------------------------------------------
 // App Configuration
@@ -27,16 +28,16 @@ const Book = require('./data');
 //----------------------------------------------------------------------------
 // Routing
 //----------------------------------------------------------------------------
+const book = require('./routes');
 
-router.get('/ping', (req, res) => {
-  res.json(Book);
-});
+book_router.get('/', book.list)
+book_router.get('/:id', book.get)
 
 //----------------------------------------------------------------------------
 // Register Routes
 //----------------------------------------------------------------------------
 
-app.use('/', router);
+app.use('/book', book_router);
 
 //----------------------------------------------------------------------------
 // Run the app
