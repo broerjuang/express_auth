@@ -1,0 +1,23 @@
+{
+  "name": "express_auth",
+  "description": "learning to make an authentication using express",
+  "main": "app.js",
+  "authors": [
+    "broerjuang"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "express",
+    "authentication"
+  ],
+  "homepage": "https://github.com/broerjuang/express_auth",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/lib",
+    "test",
+    "tests"
+  ]
+}
