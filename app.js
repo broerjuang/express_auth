@@ -8,11 +8,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const pug = require('pug');
 
 // initiate express
 const app = express();
 const router = express.Router();
-const book_router = express.Router();
+
+// set view engine
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 //----------------------------------------------------------------------------
 // App Configuration
@@ -28,16 +32,18 @@ const Book = require('./data');
 //----------------------------------------------------------------------------
 // Routing
 //----------------------------------------------------------------------------
-const book = require('./routes');
+const book = require('./data');
 
-book_router.get('/', book.list)
-book_router.get('/:id', book.get)
+router.get('/', (req, res) => {
+  //res.send('pug')
+  res.render('index', {title : book[0].title})
+})
 
 //----------------------------------------------------------------------------
 // Register Routes
 //----------------------------------------------------------------------------
 
-app.use('/book', book_router);
+app.use('/', router);
 
 //----------------------------------------------------------------------------
 // Run the app
