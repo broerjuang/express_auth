@@ -3,8 +3,12 @@ const data = require('./data')
 
 let Book = {
 
-  list : (req, res) => {
+  list : (req, res, next) => {
     res.send(data.map(book => book.title))
+  },
+
+  one : (req, res) => {
+    console.log('done');
   },
 
   get : (req, res) => {
@@ -12,7 +16,7 @@ let Book = {
   },
 
   delete : (req, res) => {
-    res.send('delete book')
+    res.send('delete boo')
   },
 
   find : (req, res) => {
