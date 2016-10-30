@@ -27,17 +27,20 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
-const Book = require('./data');
+//const Book = require('./data');
 
 //----------------------------------------------------------------------------
 // Routing
 //----------------------------------------------------------------------------
-const book = require('./data');
+const Book = require('./routes');
+const data = require('./data')
 
-router.get('/', (req, res) => {
-  //res.send('pug')
-  res.render('index', {title : book[0].title})
-})
+// router.get('/', (req, res) => {
+//   //res.send('pug')
+//   res.send(Book.list);
+// })
+
+router.get('/:id', Book.get)
 
 //----------------------------------------------------------------------------
 // Register Routes
