@@ -5,6 +5,7 @@ var router = express.Router();
 const Book = require('../controller');
 
 
-router.get('/', Book.list, Book.one)
+router.get('/', Book.list);
+router.get('/:title', Book.create);
 
 module.exports = router;

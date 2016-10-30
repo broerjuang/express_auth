@@ -1,10 +1,23 @@
 'use strict'
-const data = require('./data')
+//const data = require('./data')
+const data = require('./models/user')
 
 let Book = {
+  create : (req, res) => {
+    data.create({
+      id    : data.length,
+      title : req.params.title,
+      price : 100
+    }, (err, input) => {
+      err ? console.error(err) : console.log(input);
+    })
+  },
 
-  list : (req, res, next) => {
-    res.send(data.map(book => book.title))
+  list : (req, res) => {
+    data.find({}, (data) => {
+      res.json(data);
+    })
+    //res.send(data.map(book => book.title))
   },
 
   one : (req, res) => {
