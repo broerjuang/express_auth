@@ -1,13 +1,14 @@
 'use strict'
+const data = require('./data')
 
 let Book = {
 
   list : (req, res) => {
-    res.send('book list')
+    res.send(data.map(book => book.title))
   },
 
   get : (req, res) => {
-    res.send('book' + req.params.id)
+    res.send(data.filter(x => x.id == req.params.id))
   },
 
   delete : (req, res) => {
